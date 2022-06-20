@@ -2,6 +2,7 @@ package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,8 +18,12 @@ public class Test01 extends TestBase {
     //1) Bir class oluşturun: YoutubeAssertions
 
     //2) http://automationexercise.com adresine gidin
+    @BeforeClass
+    public void beforeClassMethod(){
+        driver.get("http://automationexercise.com");
+    }
     @Test
-    public void Test01() {
+    public void test01() {
 
         driver.get("http://automationexercise.com");
 
@@ -41,9 +46,16 @@ public class Test01 extends TestBase {
     public void imageTest() {
         driver.get("http://automationexercise.com");
         WebElement image = driver.findElement(By.xpath("//*[@*='/static/images/home/logo.png']"));
-
         Assert.assertTrue(image.isDisplayed());
     }
-    //○ Search Box 'in erisilebilir oldugunu test edin (isEnabled())
+    //○ Signup  'in erisilebilir oldugunu test edin (isEnabled())
+   @Test
+    public void signUpTest(){
+       WebElement signup= driver.findElement(By.xpath("//*[@*='/login']"));
+       Assert.assertTrue(signup.isEnabled());
+
+   }
+    
+
     //○ wrongTitleTest => Sayfa basliginin “youtube” olmadigini dogrulayin
 }
