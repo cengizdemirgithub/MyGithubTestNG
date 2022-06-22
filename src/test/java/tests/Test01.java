@@ -41,7 +41,7 @@ public class Test01 extends TestBase {
 
     }
 
-    //○ imageTest => YouTube resminin görüntülendiğini (isDisplayed()) test edin
+    //○ imageTest =>  resminin görüntülendiğini (isDisplayed()) test edin
     @Test
     public void imageTest() {
         driver.get("http://automationexercise.com");
@@ -51,11 +51,20 @@ public class Test01 extends TestBase {
     //○ Signup  'in erisilebilir oldugunu test edin (isEnabled())
    @Test
     public void signUpTest(){
-       WebElement signup= driver.findElement(By.xpath("//*[@*='/login']"));
+       driver.get("http://automationexercise.com");
+       WebElement signup= driver.findElement(By.xpath("//*[@href='/login']"));
        Assert.assertTrue(signup.isEnabled());
 
    }
     
 
-    //○ wrongTitleTest => Sayfa basliginin “youtube” olmadigini dogrulayin
+    //○ wrongTitleTest => Sayfa basliginin “automatic” olmadigini dogrulayin
+    @Test
+    public void wrongTitleTest() {
+        driver.get("http://automationexercise.com");
+        String title = driver.getTitle();
+        Assert.assertFalse(title.equals("automatic"));
+    }
+
+
 }
