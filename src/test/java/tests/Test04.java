@@ -1,6 +1,8 @@
 package tests;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import utilities.TestBase;
 
@@ -18,9 +20,17 @@ public class Test04 extends TestBase {
         Assert.assertTrue(driver.getTitle().contains("Automation"));
 
         //4. Add products to cart
+        WebElement product1=driver.findElement(By.xpath("//*[@data-product-id='1']"));
+        product1.click();
 
         //5. Click 'Cart' button
+        WebElement contuniueShopping = driver.findElement(By.xpath("//*[text()='Continue Shopping']"));
+        contuniueShopping.click();
+        WebElement chart1=driver.findElement(By.xpath("//*[text()=' Cart']"));
+        chart1.click();
         //6. Verify that cart page is displayed
+        String cartPage="https://automationexercise.com/view_cart";
+        Assert.assertTrue(driver.getCurrentUrl().equals(cartPage));
         //7. Click Proceed To Checkout
         //8. Click 'Register / Login' button
         //9. Fill all details in Signup and create account
