@@ -32,6 +32,8 @@ public class Test04 extends TestBase {
         String cartPage="https://automationexercise.com/view_cart";
         Assert.assertTrue(driver.getCurrentUrl().equals(cartPage));
         //7. Click Proceed To Checkout
+        WebElement checkout=driver.findElement(By.xpath("//*[text()='Proceed To Checkout']"));
+        checkout.click();
         //8. Click 'Register / Login' button
         //9. Fill all details in Signup and create account
         //10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
