@@ -35,7 +35,11 @@ public class Test04 extends TestBase {
         WebElement checkout=driver.findElement(By.xpath("//*[text()='Proceed To Checkout']"));
         checkout.click();
         //8. Click 'Register / Login' button
+        WebElement register=driver.findElement(By.xpath("(//a[@href='/login'])[2]"));
+        register.click();
+        
         //9. Fill all details in Signup and create account
+
         //10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
         //11. Verify ' Logged in as username' at top
         //12.Click 'Cart' button
