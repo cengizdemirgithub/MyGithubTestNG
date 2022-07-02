@@ -1,7 +1,9 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import utilities.TestBase;
@@ -39,8 +41,24 @@ public class Test04 extends TestBase {
         register.click();
         
         //9. Fill all details in Signup and create account
+        Faker faker=new Faker();
+       // WebElement eMail=driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[2]"));
+      //  eMail.sendKeys(faker.internet().emailAddress());
+       // WebElement password=driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[3]"));
+      //  password.sendKeys(faker.internet().password());
+        WebElement name = driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/input[2]"));
+        name.sendKeys(faker.name().fullName());
+        WebElement eMail2=driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/input[3]"));
+        eMail2.sendKeys(faker.internet().emailAddress());
+        WebElement signUpTest = driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[3]/div/form/button"));
+        signUpTest.sendKeys(Keys.ENTER);
+
+
+
+
 
         //10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
+
         //11. Verify ' Logged in as username' at top
         //12.Click 'Cart' button
         //13. Click 'Proceed To Checkout' button
