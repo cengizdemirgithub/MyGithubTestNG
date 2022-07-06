@@ -3,6 +3,7 @@ package tests;
 import com.github.javafaker.Faker;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -64,11 +65,23 @@ public class Test04 extends TestBase {
         Select select = new Select(driver.findElement(By.id("days")));
         Random random = new Random();
 
-        select.selectByVisibleText(random.ints().toString());
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("window.scrollBy(0,250)");
         driver.findElement(By.id("days")).click();
+        select.selectByVisibleText("5");
+        driver.findElement(By.id("days")).click();
+        driver.findElement(By.id("months")).click();
+        Select select_month = new Select(driver.findElement(By.id("days")));
+        driver.findElement(By.id("months")).click();
+        select_month.selectByVisibleText("September");
+        driver.findElement(By.id("months")).click();
+
+
+
 
 
         //10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
+
 
         //11. Verify ' Logged in as username' at top
         //12.Click 'Cart' button
