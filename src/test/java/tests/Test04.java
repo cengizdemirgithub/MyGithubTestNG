@@ -65,18 +65,27 @@ public class Test04 extends TestBase {
         Select select = new Select(driver.findElement(By.id("days")));
         Random random = new Random();
 
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollBy(0,250)");
         driver.findElement(By.id("days")).click();
         select.selectByVisibleText("5");
         driver.findElement(By.id("days")).click();
         driver.findElement(By.id("months")).click();
-        Select select_month = new Select(driver.findElement(By.id("days")));
+        Select select_month = new Select(driver.findElement(By.id("months")));
         driver.findElement(By.id("months")).click();
         select_month.selectByVisibleText("September");
         driver.findElement(By.id("months")).click();
-
-
+        driver.findElement(By.id("years")).click();
+        Select select_years = new Select(driver.findElement(By.id("years")));
+        select_years.selectByIndex(5);
+        driver.findElement(By.id("newsletter")).click();
+        driver.findElement(By.id("optin")).click();
+        driver.findElement(By.id("first_name")).sendKeys(faker.name().firstName());
+        driver.findElement(By.id("last_name")).sendKeys(faker.name().lastName());
+        driver.findElement(By.id("address1")).sendKeys(faker.address().fullAddress());
+        driver.findElement(By.id("country")).click();
+        Select select_country = new Select(driver.findElement(By.id("country")));
+        select_country.selectByIndex(2);
 
 
 
