@@ -86,10 +86,20 @@ public class Test04 extends TestBase {
         driver.findElement(By.id("country")).click();
         Select select_country = new Select(driver.findElement(By.id("country")));
         select_country.selectByIndex(2);
+        driver.findElement(By.id("state")).sendKeys(faker.address().state());
+        driver.findElement(By.id("city")).sendKeys(faker.address().city());
+        driver.findElement(By.id("zipcode")).sendKeys(faker.address().zipCode());
+        driver.findElement(By.id("mobile_number")).sendKeys(faker.phoneNumber().cellPhone());
+        driver.findElement(By.xpath("//*[text()='Create Account']")).click();
+
+
 
 
 
         //10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
+        WebElement accountCreated = driver.findElement(By.xpath("//*[text()='Account Created!']"));
+        Assert.assertTrue(accountCreated.isDisplayed());
+        driver.findElement(By.xpath("//*[text()='Continue']")).click();
 
 
         //11. Verify ' Logged in as username' at top
