@@ -12,6 +12,7 @@ import utilities.TestBase;
 
 import java.util.Random;
 
+//import static jdk.nashorn.internal.runtime.PropertyHashMap.findElement;
 import static org.bouncycastle.cms.RecipientId.password;
 
 public class Test04 extends TestBase {
@@ -103,9 +104,19 @@ public class Test04 extends TestBase {
 
 
         //11. Verify ' Logged in as username' at top
+        WebElement asLoggedIn = driver.findElement(By.xpath("//*[text()=' Logged in as ']"));
+        Assert.assertTrue(asLoggedIn.isDisplayed());
+
         //12.Click 'Cart' button
+        driver.findElement(By.xpath("//*[text()=' Cart']")).click();
         //13. Click 'Proceed To Checkout' button
+        driver.findElement(By.xpath("//*[text()='Proceed To Checkout']")).click();
         //14. Verify Address Details and Review Your Order
+        WebElement deliveryAdress=driver.findElement(By.xpath("(//li[@class='address_address1 address_address2'])[2]"));
+        WebElement billingyAdress=driver.findElement(By.xpath("(//li[@class='address_address1 address_address2'])[5]"));
+        Assert.assertTrue(deliveryAdress.getText().equals(billingyAdress.getText()));
+
+
         //15. Enter description in comment text area and click 'Place Order'
         //16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
         //17. Click 'Pay and Confirm Order' button
