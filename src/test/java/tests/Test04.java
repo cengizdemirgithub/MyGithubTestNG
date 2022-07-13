@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import utilities.TestBase;
 
+import java.util.Locale;
 import java.util.Random;
 
 //import static jdk.nashorn.internal.runtime.PropertyHashMap.findElement;
@@ -118,6 +119,9 @@ public class Test04 extends TestBase {
 
 
         //15. Enter description in comment text area and click 'Place Order'
+        WebElement comment=driver.findElement(By.xpath("//*[@class='form-control']"));
+        comment.sendKeys(faker.expression("comment"));
+        driver.findElement(By.xpath("//*[text()='Place Order']")).click();
         //16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
         //17. Click 'Pay and Confirm Order' button
         //18. Verify success message 'Your order has been placed successfully!'
