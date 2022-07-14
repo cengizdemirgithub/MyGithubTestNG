@@ -123,6 +123,18 @@ public class Test04 extends TestBase {
         comment.sendKeys(faker.expression("comment"));
         driver.findElement(By.xpath("//*[text()='Place Order']")).click();
         //16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
+        WebElement nameOnCard = driver.findElement(By.xpath("//*[@*='name_on_card']"));
+        nameOnCard.sendKeys(faker.name().fullName());
+        WebElement cardNumber = driver.findElement(By.xpath("//*[@*='card_number']"));
+        cardNumber.sendKeys(faker.number().digits(12));
+        WebElement cvc = driver.findElement(By.xpath("//*[@*='cvc']"));
+        cvc.sendKeys(faker.number().digits(3));
+        WebElement expiryDate = driver.findElement(By.xpath("//*[@*='expiry_month']"));
+        expiryDate.sendKeys(faker.random().nextInt(1,12).toString());
+        WebElement expiryYear = driver.findElement(By.xpath("//*[@*='expiry_year']"));
+        expiryYear.sendKeys(faker.random().nextInt(2000,2022).toString());
+        driver.findElement(By.xpath("(//*[@*='submit'])[1]")).click();
+
         //17. Click 'Pay and Confirm Order' button
         //18. Verify success message 'Your order has been placed successfully!'
         //19. Click 'Download Invoice' button and verify invoice is downloaded successfully.
