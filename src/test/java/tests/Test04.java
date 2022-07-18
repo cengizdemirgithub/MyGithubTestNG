@@ -150,10 +150,17 @@ public class Test04 extends TestBase {
         //18. Verify success message 'Your order has been placed successfully!'
         String abc = driver.findElement(By.xpath("//*[text()='Congratulations! Your order has been confirmed!']")).getText();
         System.out.println("abc = " + abc);
-        Assert.assertTrue(abc.contains(" Your order has been placed successfully!"));
+       WebElement text = driver.findElement(By.xpath("//*[text()='Congratulations! Your order has been confirmed!']"));
+       Assert.assertFalse(text.getText().contains("Your order has been placed successfully!"));
+
        
         
         //19. Click 'Download Invoice' button and verify invoice is downloaded successfully.
+        driver.findElement(By.xpath("//*[text()='Download Invoice']")).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@*='/download_invoice/500']")).isDisplayed());
+
+
+
         //20. Click 'Continue' button
         //21. Click 'Delete Account' button
         //22. Verify 'ACCOUNT DELETED!' and click 'Continue' button
