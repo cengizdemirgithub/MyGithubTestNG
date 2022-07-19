@@ -162,7 +162,11 @@ public class Test04 extends TestBase {
 
 
         //20. Click 'Continue' button
+        driver.findElement(By.xpath("//*[text()='Continue']"));
         //21. Click 'Delete Account' button
+        WebElement deleteAccount = driver.findElement(By.xpath("//*[text()=' Delete Account']"));
+        deleteAccount.click();
         //22. Verify 'ACCOUNT DELETED!' and click 'Continue' button
+        Assert.assertTrue(driver.findElement(By.xpath("//*[text()='HTTP 405 Method Not Allowed']")).isDisplayed());
     }
 }
