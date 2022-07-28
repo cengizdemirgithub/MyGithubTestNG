@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import java.time.Duration;
 
     public class TestBase {
-        protected WebDriver driver;
+        protected static WebDriver driver;
         @BeforeMethod
         public void setUp() {
             WebDriverManager.chromedriver().setup();
