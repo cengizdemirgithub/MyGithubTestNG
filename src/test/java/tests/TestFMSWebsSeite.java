@@ -1,5 +1,6 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
 
@@ -18,6 +19,7 @@ import java.sql.Driver;
 
 public class TestFMSWebsSeite extends TestBase {
     JavascriptExecutor js = (JavascriptExecutor) driver;
+    Faker fake=new Faker();
 
 
 
@@ -40,6 +42,35 @@ public class TestFMSWebsSeite extends TestBase {
         Thread.sleep(2000);
         driver.findElement(By.xpath("(//*[text()='Weiterlesen'])[14]")).click();//software tester web element
         driver.findElement(By.xpath("(//*[@class='ubtn-data ubtn-text '])[1]")).click();//online bewerben
+
+
+    }
+    @Test
+    public void test02_Kontakt() throws InterruptedException {
+        driver.findElement(By.xpath("//*[@id='uc-btn-accept-banner']")).click();//cookie web element
+        Thread.sleep(2000);
+        WebElement kontakt=driver.findElement(By.xpath("(//*[text()='Kontakt'])[1]"));
+        kontakt.click();
+        Thread.sleep(2000);
+        WebElement name=driver.findElement(By.xpath("//*[@placeholder='Name*']"));
+        name.sendKeys(fake.name().fullName());
+        Thread.sleep(2000);
+        WebElement email=driver.findElement(By.xpath("//*[@placeholder='E-Mail-Adresse*']"));
+        email.sendKeys(fake.internet().emailAddress());
+        Thread.sleep(2000);
+        WebElement telNumber=driver.findElement(By.xpath("//*[@placeholder='Telefonnummer']"));
+        telNumber.sendKeys(fake.phoneNumber().cellPhone());
+        Thread.sleep(2000);
+        WebElement message=driver.findElement(By.xpath("//*[@placeholder='Freitextfeld*']"));
+        message.sendKeys("calm down only a trying:)))");
+        Thread.sleep(2000);
+        WebElement checkbox=driver.findElement(By.xpath("(//input[@type='checkbox'])[1]"));
+        checkbox.click();
+        WebElement question=driver.findElement(By.xpath("//*[@name='random-math-quiz']"));
+        question.sendKeys("2");
+
+
+
 
 
     }
