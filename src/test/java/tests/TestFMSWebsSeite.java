@@ -30,7 +30,7 @@ public class TestFMSWebsSeite extends TestBase {
         driver.navigate().to("https://www.future-mobility-solutions.com/");
     }
     @Test
-    public void test01_Bewerbung() throws InterruptedException {
+    public void test01_Bewerbung() throws NullPointerException, InterruptedException {
 
         //driver.get("https://www.future-mobility-solutions.com/");
         driver.findElement(By.xpath("//rs-layer[@id='slider-4-slide-4-layer-24']")).click();//bewerbung web element
@@ -38,9 +38,18 @@ public class TestFMSWebsSeite extends TestBase {
         driver.findElement(By.xpath("//*[@id='uc-btn-accept-banner']")).click();//cookie web element
         Thread.sleep(2000);
         driver.findElement(By.xpath("//span[text()='Berufserfahrene']")).click();//berufserfahrene web element
+/*
+           try {
+               js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+           } catch (Exception NullPointerException) {
+               NullPointerException.printStackTrace();
+           }
 
-        Thread.sleep(2000);
+ */
+
+       Thread.sleep(2000);
         driver.findElement(By.xpath("(//*[text()='Weiterlesen'])[14]")).click();//software tester web element
+        Thread.sleep(2000);
         driver.findElement(By.xpath("(//*[@class='ubtn-data ubtn-text '])[1]")).click();//online bewerben
 
 
@@ -67,7 +76,11 @@ public class TestFMSWebsSeite extends TestBase {
         WebElement checkbox=driver.findElement(By.xpath("(//input[@type='checkbox'])[1]"));
         checkbox.click();
         WebElement question=driver.findElement(By.xpath("//*[@name='random-math-quiz']"));
-        question.sendKeys("2");
+        question.click();
+        question.sendKeys("3");
+        WebElement submit=driver.findElement(By.xpath("(//*[@type='submit'])[1]"));
+        submit.submit();
+
 
 
 
