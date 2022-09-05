@@ -69,7 +69,7 @@ public class TestFMSWebsSeite extends TestBase {
         checkbox.click();
         WebElement question = driver.findElement(By.xpath("//*[@name='random-math-quiz']"));
         question.click();
-        question.sendKeys("3");
+        question.sendKeys("1");
         WebElement submit = driver.findElement(By.xpath("(//*[@type='submit'])[1]"));
         submit.submit();
 
